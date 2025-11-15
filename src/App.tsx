@@ -1,7 +1,9 @@
+import Board from "./components/board";
+
 function App() {
   return (
-    <div className="items-center justify-center text-center min-h-screen flex ">
-      <h1 className="font-extrabold text-4xl text-blue-700">this is app.tsx</h1>
+    <div className="h-screen flex justify-center bg-neutral-900 text-neutral-50">
+      <Board />
     </div>
   );
 }
