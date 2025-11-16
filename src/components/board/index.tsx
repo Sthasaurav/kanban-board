@@ -12,6 +12,7 @@ const Board = () => {
         status="new task"
         headingColor="text-red-600"
         cards={cards}
+        setCards={setCards}
       />
       <Column
         title="In Progress"

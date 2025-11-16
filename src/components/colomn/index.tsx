@@ -2,11 +2,17 @@ import Card from "../card";
 import AddCard from "../add-card";
 import type { IColumn } from "../../types/column";
 
-const Column: React.FC<IColumn> = ({ title, headingColor, cards, column }) => {
+const Column: React.FC<IColumn> = ({
+  title,
+  headingColor,
+  cards,
+  column,
+  setCards,
+}) => {
   const filteredCards = cards.filter((card) => card.column === column);
 
   return (
-    <div className="w-64 shrink-0 bg-[#1a1b11] p-4 rounded-2xl shadow-lg border border-[#2a2b1d]">
+    <div className="w-64 shrink-0 bg-[#1a1b11] p-4 rounded-xl shadow-lg border border-[#2a2b1d]">
       <div className="mb-4 flex items-center justify-between">
         <h2 className={`${headingColor} font-semibold text-lg`}>{title}</h2>
 
@@ -28,9 +34,11 @@ const Column: React.FC<IColumn> = ({ title, headingColor, cards, column }) => {
         ))}
       </div>
 
-      <div className="mt-4">
-        <AddCard />
-      </div>
+      {setCards && (
+        <div className="mt-4">
+          <AddCard column={column} setCards={setCards} />
+        </div>
+      )}
     </div>
   );
 };
