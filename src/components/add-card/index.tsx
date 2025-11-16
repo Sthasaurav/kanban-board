@@ -1,22 +1,16 @@
 import { useState, type FormEvent } from "react";
 import type { IAddCardProps } from "../../types/card";
+import { useBoardStore } from "../../store/boardStore";
 
-const AddCard = ({ column, setCards }: IAddCardProps) => {
+const AddCard = ({ column }: IAddCardProps) => {
   const [text, setText] = useState("");
   const [adding, setAdding] = useState(false);
 
+  const addCard = useBoardStore((state) => state.addCard);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    if (text.trim() === "") return;
-
-    const newCard = {
-      column,
-      title: text.trim(),
-      id: Math.random().toString(),
-    };
-
-    setCards((prev) => [...prev, newCard]);
+    if (text.trim() === "") return  ;
+    addCard(text, column);
     setText("");
     setAdding(false);
   };

@@ -7,8 +7,8 @@ const Column: React.FC<IColumn> = ({
   headingColor,
   cards,
   column,
-  setCards,
   onDeleteCard,
+  onEditCard,
 }) => {
   const filteredCards = cards.filter((card) => card.column === column);
 
@@ -31,15 +31,19 @@ const Column: React.FC<IColumn> = ({
 
       <div className="flex flex-col gap-3 min-h-[50px]">
         {filteredCards.map((card) => (
-          <Card key={card.id} id={card.id} title={card.title} onDelete={onDeleteCard} />
+          <Card
+            key={card.id}
+            id={card.id}
+            title={card.title}
+            onDelete={onDeleteCard}
+            onEdit={onEditCard}
+          />
         ))}
       </div>
 
-      {setCards && (
-        <div className="mt-4">
-          <AddCard column={column} setCards={setCards} />
-        </div>
-      )}
+      <div className="mt-4">
+        <AddCard column={column} />
+      </div>
     </div>
   );
 };
