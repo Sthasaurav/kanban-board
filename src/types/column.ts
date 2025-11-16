@@ -7,4 +7,5 @@ export interface IColumn {
   column: "todo" | "doing" | "done";
   cards: ICard[];
   setCards: Dispatch<SetStateAction<ICard[]>>;
+  onDeleteCard: (id: string) => void;
 }

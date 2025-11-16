@@ -8,6 +8,7 @@ const Column: React.FC<IColumn> = ({
   cards,
   column,
   setCards,
+  onDeleteCard,
 }) => {
   const filteredCards = cards.filter((card) => card.column === column);
 
@@ -30,7 +31,7 @@ const Column: React.FC<IColumn> = ({
 
       <div className="flex flex-col gap-3 min-h-[50px]">
         {filteredCards.map((card) => (
-          <Card key={card.id} title={card.title} />
+          <Card key={card.id} id={card.id} title={card.title} onDelete={onDeleteCard} />
         ))}
       </div>
 
