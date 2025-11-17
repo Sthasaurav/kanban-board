@@ -1,6 +1,7 @@
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { ICard } from "../types/card";
+import { CARD_DATA } from "../lib/constant";
 
 interface BoardState {
   cards: ICard[];
@@ -13,7 +14,7 @@ interface BoardState {
 export const useBoardStore = create<BoardState>()(
   persist(
     (set) => ({
-      cards: [],
+      cards: CARD_DATA as ICard[],
 
       addCard: (title, column) =>
         set((state) => ({

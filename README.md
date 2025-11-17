@@ -10,7 +10,7 @@ Kanban board built with React, TypeScript, Vite and styled with Typescript.
 - Inline card editing, quick delete, and in-column creation
 - Tailwind-driven styling layered on a gradient shell and sticky navbar
 
-##  Getting Started
+## Getting Started
 
 ```bash
 # 1. Install dependencies
@@ -24,7 +24,7 @@ npm run dev
 
 The app boots at [http://localhost:5173](http://localhost:5173) by default.
 
-##  Project Structure
+## Project Structure
 
 ```
 src/
@@ -39,3 +39,4 @@ src/
 ├── types/               // shared interfaces
 ├── App.tsx              // shell + hero + board
 └── main.tsx             // React/Vite bootstrap
+```
