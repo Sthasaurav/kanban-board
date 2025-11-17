@@ -49,48 +49,45 @@ const Card: React.FC<ICardProps> = ({ id, title, onDelete, onEdit }) => {
       {...listeners}
       {...attributes}
       draggable={false}
-      className="group cursor-grab rounded-xl border border-neutral-700 bg-[#242428] p-3 active:cursor-grabbing relative"
+      className="group relative cursor-all-scroll rounded-2xl border border-white/5 bg-neutral-800/70 p-4 text-sm text-white shadow-lg shadow-black/30 transition hover:border-white/20 hover:bg-neutral-800/90 "
     >
       {isEditing ? (
         <div className="pr-6">
           <textarea
-            className="w-full bg-gray-700 rounded-lg p-2 text-sm text-white resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="w-full resize-none rounded-xl border border-white/10 bg-neutral-900/60 p-3 text-sm text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500/50"
             value={editTitle}
             onChange={(e) => setEditTitle(e.target.value)}
             onBlur={handleSave}
             autoFocus
             rows={3}
           />
-          <div className="flex gap-2 mt-2">
-            <button
-              onClick={handleSave}
-              className="text-xs bg-white hover:bg-white/75 text-black px-2 py-1 rounded transition-colors"
-            >
+          <div className="mt-3 flex gap-2">
+            <button onClick={handleSave} className="button-primary">
               Save
             </button>
-            <button
-              onClick={handleCancel}
-              className="text-xs bg-gray-600 hover:bg-gray-700 text-white px-2 py-1 rounded transition-colors"
-            >
+            <button onClick={handleCancel} className="button-secondary">
               Cancel
             </button>
           </div>
         </div>
       ) : (
         <>
-          <p className="pr-12">{title}</p>
-          <div className="absolute top-2 right-2 flex gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+          <p className="pr-12 text-base font-medium leading-snug text-white">
+            {title}
+          </p>
+          <div className="absolute right-3 top-3 flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
             <button
               onClick={handleEdit}
-              className="text-blue-400 hover:text-blue-500 text-sm font-bold w-5 h-5 flex items-center justify-center rounded hover:bg-blue-500/20"
+              className="cursor-pointer flex h-7 w-7 items-center justify-center rounded-full bg-white/5 text-xs font-bold text-blue-300 transition hover:bg-blue-500/20 hover:text-white"
               aria-label="Edit card"
+              title="Edit Card"
             >
               ✎
             </button>
             <button
               onClick={handleDelete}
-              className="text-red-400 hover:text-red-500 text-sm font-bold w-5 h-5 flex items-center justify-center rounded hover:bg-red-500/20"
-              aria-label="Delete card"
+              className="flex cursor-pointer h-7 w-7 items-center justify-center rounded-full bg-white/5 text-xs font-bold text-red-300 transition hover:bg-red-500/20 hover:text-white"
+              title="Delete Card"
             >
               ×
             </button>

@@ -9,7 +9,7 @@ const AddCard = ({ column }: IAddCardProps) => {
   const addCard = useBoardStore((state) => state.addCard);
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (text.trim() === "") return  ;
+    if (text.trim() === "") return;
     addCard(text, column);
     setText("");
     setAdding(false);
@@ -17,37 +17,38 @@ const AddCard = ({ column }: IAddCardProps) => {
   return (
     <>
       {adding ? (
-        <form onSubmit={handleSubmit}>
+        <form
+          onSubmit={handleSubmit}
+          className="rounded-2xl border border-white/10 bg-neutral-900/60 p-4"
+        >
           <textarea
-            className="w-full bg-gray-600 rounded-xl p-3 mb-2 text-sm text-white resize-none focus:outline-none"
+            className="mb-3 w-full resize-none rounded-xl border border-dashed border-white/10 bg-neutral-800/80 p-3 text-sm text-white placeholder:text-white/30 focus:border-white/30 focus:outline-none focus:ring-2 focus:ring-orange-500/30"
             placeholder="Enter a card title"
             value={text}
             onChange={(e) => setText(e.target.value)}
             autoFocus
-          ></textarea>
-          <div className="flex gap-2 flex-row justify-center">
-            <button
-              type="submit"
-              className=" bg-white p-3 rounded-xl text-sm font-medium  cursor-pointer text-black 
-            transition-all duration-150
-            hover:bg-white/75"
-            >
+            rows={3}
+          />
+          <div className="flex flex-wrap gap-3">
+            <button type="submit" className=" button-primary">
               Add Card
             </button>
             <button
+              type="button"
               onClick={() => setAdding(false)}
-              className="  p-3 rounded-xl text-sm font-medium  cursor-pointer text-gray-400 hover:text-red-500 transition-colors duration-150"
+              className="button-secondary"
             >
-              close
+              Cancel
             </button>
           </div>
         </form>
       ) : (
         <button
-          className="p-3 hover:bg-gray-600 rounded-xl cursor-pointer text-left w-full text-sm text-gray-300"
+          className="cursor-pointer flex w-full items-center justify-between rounded-xl hover:border hover:border-dashed border-white/10  px-4 py-3 text-sm font-medium text-white/70 transition hover:border-white/30 hover:bg-white/10 hover:text-white"
           onClick={() => setAdding(true)}
         >
-          + Add a Card
+          <span>+ Add a Card</span>
+          <span className="text-xs text-white/40">Enter ↵</span>
         </button>
       )}
     </>
