@@ -7,6 +7,7 @@ interface BoardState {
   addCard: (title: string, column: ICard["column"]) => void;
   deleteCard: (id: string) => void;
   editCard: (id: string, title: string) => void;
+  moveCard: (id: string, newColumn: ICard["column"]) => void;
 }
 
 export const useBoardStore = create<BoardState>()(
@@ -35,6 +36,13 @@ export const useBoardStore = create<BoardState>()(
         set((state) => ({
           cards: state.cards.map((c) =>
             c.id === id ? { ...c, title: newTitle } : c
+          ),
+        })),
+
+      moveCard: (id: string, newColumn: ICard["column"]) =>
+        set((state) => ({
+          cards: state.cards.map((c) =>
+            c.id === id ? { ...c, column: newColumn } : c
           ),
         })),
     }),

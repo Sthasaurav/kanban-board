@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import type { ICardProps } from "../../types/card";
+import { useDraggable } from "@dnd-kit/core";
 
 const Card: React.FC<ICardProps> = ({ id, title, onDelete, onEdit }) => {
   const [isEditing, setIsEditing] = useState(false);
@@ -7,11 +8,13 @@ const Card: React.FC<ICardProps> = ({ id, title, onDelete, onEdit }) => {
 
   const handleDelete = (e: React.MouseEvent) => {
     e.stopPropagation();
+    e.preventDefault();
     onDelete(id);
   };
 
   const handleEdit = (e: React.MouseEvent) => {
     e.stopPropagation();
+    e.preventDefault();
     setIsEditing(true);
     setEditTitle(title);
   };
@@ -30,9 +33,22 @@ const Card: React.FC<ICardProps> = ({ id, title, onDelete, onEdit }) => {
     setIsEditing(false);
   };
 
+  const { attributes, listeners, setNodeRef, transform } = useDraggable({
+    id,
+    data: { type: "card" },
+  });
+
+  const style = transform
+    ? { transform: `translate(${transform.x}px, ${transform.y}px)` }
+    : undefined;
+
   return (
     <div
-      draggable={!isEditing}
+      ref={setNodeRef}
+      style={style}
+      {...listeners}
+      {...attributes}
+      draggable={false}
       className="group cursor-grab rounded-xl border border-neutral-700 bg-[#242428] p-3 active:cursor-grabbing relative"
     >
       {isEditing ? (

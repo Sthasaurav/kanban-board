@@ -1,8 +1,10 @@
 import Card from "../card";
 import AddCard from "../add-card";
 import type { IColumn } from "../../types/column";
+import { useDroppable } from "@dnd-kit/core";
 
 const Column: React.FC<IColumn> = ({
+  id,
   title,
   headingColor,
   cards,
@@ -11,9 +13,13 @@ const Column: React.FC<IColumn> = ({
   onEditCard,
 }) => {
   const filteredCards = cards.filter((card) => card.column === column);
+  const { setNodeRef } = useDroppable({ id });
 
   return (
-    <div className="w-64 shrink-0 bg-[#1a1b11] p-4 rounded-xl shadow-lg border border-[#2a2b1d]">
+    <div
+      ref={setNodeRef}
+      className="w-64 shrink-0 bg-[#1a1b11] p-4 rounded-xl shadow-lg border border-[#2a2b1d]"
+    >
       <div className="mb-4 flex items-center justify-between">
         <h2 className={`${headingColor} font-semibold text-lg`}>{title}</h2>
 
