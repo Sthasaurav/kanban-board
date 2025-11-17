@@ -32,13 +32,13 @@ const Board = () => {
   };
 
   return (
-    <div className="flex sm:flex-row flex-col gap-4 p-4">
+    <div className="flex sm:flex-row flex-col gap-4 sm:gap-14 p-4 justify-center">
       <DndContext sensors={sensors} onDragEnd={handleDragEnd}>
         <Column
           id="todo"
           title="To Do"
           column="todo"
-          headingColor="text-red-600"
+          headingColor="text-rose-400"
           cards={cards}
           onDeleteCard={deleteCard}
           onEditCard={editCard}
@@ -47,7 +47,7 @@ const Board = () => {
           id="doing"
           title="In Progress"
           column="doing"
-          headingColor="text-yellow-600"
+          headingColor="text-amber-300"
           cards={cards}
           onDeleteCard={deleteCard}
           onEditCard={editCard}
@@ -56,7 +56,7 @@ const Board = () => {
           id="done"
           title="Done"
           column="done"
-          headingColor="text-green-600"
+          headingColor="text-emerald-300"
           cards={cards}
           onDeleteCard={deleteCard}
           onEditCard={editCard}

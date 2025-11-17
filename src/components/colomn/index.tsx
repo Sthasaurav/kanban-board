@@ -18,7 +18,7 @@ const Column: React.FC<IColumn> = ({
   return (
     <div
       ref={setNodeRef}
-      className="w-64 shrink-0 bg-[#1a1b11] p-4 rounded-xl shadow-lg border border-[#2a2b1d]"
+      className="h-fit w-72 shrink-0 rounded-2xl border border-white/10 bg-linear-to-b from-neutral-800/80 to-neutral-900/70 p-4 shadow-xl shadow-black/40"
     >
       <div className="mb-4 flex items-center justify-between">
         <h2 className={`${headingColor} font-semibold text-lg`}>{title}</h2>
@@ -35,7 +35,7 @@ const Column: React.FC<IColumn> = ({
         </span>
       </div>
 
-      <div className="flex flex-col gap-3 min-h-[50px]">
+      <div className="flex max-h-full flex-col gap-3  pr-1">
         {filteredCards.map((card) => (
           <Card
             key={card.id}
