@@ -1,6 +1,8 @@
 import {
   DndContext,
+  MouseSensor,
   PointerSensor,
+  TouchSensor,
   useSensor,
   useSensors,
   type DragEndEvent,
@@ -15,10 +17,15 @@ const Board = () => {
   const moveCard = useBoardStore((state) => state.moveCard);
 
   const sensors = useSensors(
-    useSensor(PointerSensor, {
+    useSensor(MouseSensor),
+    useSensor(TouchSensor, {
       activationConstraint: {
-        distance: 8,
+        delay: 150,
+        tolerance: 5,
       },
+    }),
+    useSensor(PointerSensor, {
+      activationConstraint: { distance: 8 },
     })
   );
 

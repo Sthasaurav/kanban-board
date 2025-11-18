@@ -75,10 +75,10 @@ const Card: React.FC<ICardProps> = ({ id, title, onDelete, onEdit }) => {
           <p className="pr-12 text-base font-medium leading-snug text-white">
             {title}
           </p>
-          <div className="absolute right-3 top-3 flex gap-2 opacity-0 transition-opacity group-hover:opacity-100">
+          <div className="absolute right-3 top-3 flex gap-2 opacity-100 sm:opacity-0 transition-opacity group-hover:opacity-100">
             <button
               onClick={handleEdit}
-              className="cursor-pointer flex h-7 w-7 items-center justify-center rounded-full bg-white/5 text-xs font-bold text-blue-300 transition hover:bg-blue-500/20 hover:text-white"
+              className="cursor-pointer flex h-7 w-7 items-center justify-center rounded-full bg-white/5 text-xs font-bold text-blue-300 transition sm:hover:bg-blue-500/20 sm:hover:text-white"
               aria-label="Edit card"
               title="Edit Card"
             >
